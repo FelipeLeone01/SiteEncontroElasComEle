@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+
+<style>
+body {
+    font-family: Arial;
+    background-color: #fff0f5;
+    text-align: center;
+}
+
+.container {
+    margin-top: 100px;
+}
+
+input {
+    padding: 10px;
+    margin: 10px;
+    width: 200px;
+}
+
+button {
+    background-color: #ff1493;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Login</h2>
+
+    <input type="email" id="email" placeholder="Insira seu email"><br>
+    <input type="password" id="senha" placeholder="Insira sua senha"><br>
+
+    <button onclick="login()">Entrar</button>
+</div>
+
+<script>
+async function login() {
+    const email = document.getElementById("email").value;
+    const senha = document.getElementById("senha").value;
+
+    const resposta = await fetch("http://localhost:3000/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, senha })
+    });
+
+    const dados = await resposta.json();
+
+    if (dados.success) {
+        alert("Login realizado!");
+    } else {
+        alert("Erro no login");
+    }
+}
+</script>
+
+</body>
+</html>
