@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<title>Encontro Elas Com Ele</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Ministério She Brasil</title>
 <link rel="icon" href="assets/favicon.png" type="image/png">
 <!-- Ícones -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -23,6 +23,7 @@ header {
     padding: 15px 30px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     animation: aparecer 0.6s ease;
+    position: relative;
 }
 
 header h1 {
@@ -39,6 +40,7 @@ header h1:hover {
 nav {
     display: flex;
     gap: 15px;
+    
 }
 
 /* BOTÕES */
@@ -138,13 +140,71 @@ footer {
         transform: scale(1);
     }
 }
+/* AREA DA LOGO */
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* IMAGEM DA LOGO */
+.logo-area img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* AJUSTE DO TITULO */
+.logo-area h1 {
+    font-size: 20px;
+}
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #d63384;
+    margin-left: 15px;
+}
+@media (max-width: 768px) {
+
+    nav {
+        display: none;
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        background: #ffc1d6;
+        flex-direction: column;
+        width: 200px;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    nav.ativo {
+        display: flex;
+    }
+
+    nav button {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+}
 </style>
 </head>
 
 <body>
 
 <header>
-    <h1>Encontro Elas Com Ele</h1>
+  
+    <div class="logo-area">
+        <img src="assets/favicon.png" alt="Logo">
+        <h1>Ministério SHE Brasil - Por Ele, para Elas.</h1>
+    </div>
 
     <nav>
         <button onclick="irLogin()">
@@ -159,6 +219,10 @@ footer {
             <i class="fas fa-calendar-heart"></i> Mesas
         </button>
     </nav>
+    <div class="menu-toggle" onclick="abrirMenu()">
+    <i class="fas fa-bars"></i>
+</div>
+
 </header>
 
 
@@ -191,6 +255,10 @@ function verMesas() {
 function fecharModal() {
     document.getElementById("modalMesas").style.display = "none";
 }
+function abrirMenu() {
+    const menu = document.querySelector("nav");
+    menu.classList.toggle("ativo");
+}
 
 /* fechar clicando fora */
 window.onclick = function(event) {
@@ -200,10 +268,6 @@ window.onclick = function(event) {
     }
 }
 </script>
+
 </body>
 </html>
-
-
-
-
-
